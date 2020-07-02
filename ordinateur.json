@@ -1,0 +1,34 @@
+{
+  "ordinateur": [
+    {
+      "id": 1,
+      "modele": "Latitude 3500 - 15.6",
+      "marque": "Dell",
+      "type": "Portable",
+      "category": "Bureautique",
+      "prixAchat": 120.88,
+      "prixVente": 300.1,
+      "dateEntreeStock": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "id": 22,
+      "modele": "test",
+      "marque": "Asus",
+      "type": "Portable",
+      "category": "Premier prix",
+      "dateEntreeStock": null,
+      "prixAchat": 590,
+      "prixVente": 700
+    },
+    {
+      "id": 24,
+      "modele": "Essai",
+      "marque": "Asus",
+      "type": "Fixe",
+      "category": null,
+      "dateEntreeStock": "2020-07-02T12:05:05.878Z",
+      "prixAchat": 820,
+      "prixVente": 935
+    }
+  ]
+}

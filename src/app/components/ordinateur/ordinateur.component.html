@@ -1,0 +1,60 @@
+
+<h2 *ngIf="!isLoading"> Nombre d'ordinateur en stock : {{this.mesOrdis.length}}</h2>
+
+ <!-- affichage de l'objet planete à l'ecran avec le |json -->
+<!-- <h5>{{this.mesPlanettes |json}}</h5> -->
+<!-- routerLink remplace le href  specifique a angular, navigation sans rechargement de page-->
+<!-- routerLink ecrit de cette maniere quand on pas de parametres-->
+<div class="text-center addordi">
+  <a routerLink="/ordinateur/add">Ajouter un model</a>
+</div>
+<!-- <img src=../../..assets/images/ > -->
+
+<main role="main">
+
+  <div class="container">
+    <table *ngIf="!isLoading" class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Model</th>
+          <th scope="col">Marque</th>
+          <th scope="col">Type</th>
+          <th scope="col">Catégorie</th>
+          <th scope="col">Date</th>
+          <th scope="col">Prix achat</th>
+          <th scope="col">Prix vente</th>
+          <th scope="col">Indice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ordinateur of this.mesOrdis">
+          <td>{{ordinateur.id}}</td>
+          <td>{{ordinateur.modele}}</td>
+          <td>{{ordinateur.marque}}</td>
+          <td>{{ordinateur.type}}</td>
+          <td>{{ordinateur.category}}</td>
+          <td>{{ordinateur.dateEntreeStock|date:'dd/MM/yyyy'}}</td>
+          <td>{{ordinateur.prixAchat| number : '1.2-2'}}</td>
+          <td>{{ordinateur.prixVente| number : '1.2-2'}}</td>
+          <td>{{ordinateur.prixVente-ordinateur.prixAchat| number : '1.2-2'}}</td>
+          <td><a [routerLink]="['/ordinateur', ordinateur.id]">voir</a></td>
+
+          <td> <a style="text-decoration:underline;color:red" (click)="supprimerOrdinateur(ordinateur.id)">supprimer</a></td>
+          <!-- routerLink ecrit avec des crochets quand on des parametres -->
+          <td><a [routerLink]="['/ordinateur/maj', ordinateur.id]">editer </a></td>
+        </tr>
+
+      </tbody>
+    </table>
+    </div>
+  </main>
+
+<ng-container *ngIf="isLoading">
+  <!-- <h2>Chargement en cours</h2> -->
+  <div class="spinner-border text-warning" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</ng-container>
+
+

@@ -1,0 +1,97 @@
+<div class="col-md-6">
+  <div class="card text-light border-light p-5" style="height: auto; background-color: #1e1d1d">
+
+
+
+   <form  #ordiForm="ngForm" id="center" (ngSubmit)="onSubmit(ordinateur)">
+    <!-- <form (ngSubmit)="onSubmit()"> -->
+      <div class="form-group row">
+        <label for="modele" class="col-sm-10 col-form-label">Nom</label>
+        <div class="col-sm-10">
+          <input type="text" id="modele" name="modele" class="form-control" placeholder="modele" [ngClass]="{'is-invalid': !modele.valid}" required [(ngModel)]="ordinateur.modele" #modele="ngModel">
+          <div class="invalid-feedback">Veuillez saisir un modele</div>
+        </div>
+      </div>
+
+      <fieldset class="form-group  col-sm-10" >
+         <div class="row">
+
+         
+            
+              <ng-container *ngFor="let marque of marqueOrdinateur">
+                <div class="form-check custom-control-inline">
+                    <input class="form-check-input" type="radio" id="inputRadio-{{ marque }}"
+                           #marqueValidation="ngModel"
+                           name="marque" [value]="marque" [(ngModel)]="ordinateur.marque">
+                    <label class="form-check-label"  for="customRadio">{{ marque }}</label>
+                  </div>
+                </ng-container>
+            
+          
+        </div>
+      </fieldset>
+
+
+      <div class="form-group">
+        <label>Type d'ordinateur</label> <br>
+        <select #type="ngModel" name="type" [(ngModel)]="ordinateur.type"class="form-control">
+          <option></option>
+          <option *ngFor="let type of typeOrdinateur">
+            {{ type }}
+          </option>
+        </select>
+       
+      </div>
+
+
+      <fieldset class="form-group  col-sm-10" >
+        <div class="row">
+
+        <!-- <div class="col-sm-10"> --> 
+           <div class="form-check custom-control-inline">
+             <input class="form-check-input" type="radio" name="category" id="gridRadios1" value="Gaming"  [(ngModel)]="ordinateur.category" #category="ngModel">
+             <label class="form-check-label" for="category">
+               Gaming
+             </label>
+           </div>
+           <div class="form-check custom-control-inline">
+             <input class="form-check-input" type="radio" name="category" id="gridRadios2" value="Bureautique" [(ngModel)]="ordinateur.category" #category="ngModel">
+             <label class="form-check-label" for="category">
+               Bureautique
+             </label>
+           </div>
+           <div class="form-check custom-control-inline">
+             <input class="form-check-input" type="radio" name="category" id="gridRadios3" value="Premier prix" [(ngModel)]="ordinateur.category" #category="ngModel">
+             <label class="form-check-label"  for="category">
+               Premier prix
+             </label>
+           </div>
+         <!--  </div>  -->
+       </div>
+     </fieldset>
+  
+
+      <div class="form-group row">
+        <label for="prixAchat" class="col-sm-10 col-form-label">Prix d'achat</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="prixAchat" name="prixAchat" placeholder="prixAchat" [(ngModel)]="ordinateur.prixAchat" #prixAchat="ngModel">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="prixVente" class="col-sm-10 col-form-label">Prix de vente</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="prixVente" name="prixVente" placeholder="prixVente" [(ngModel)]="ordinateur.prixVente" #prixVente="ngModel">
+        </div>
+      </div>
+
+      <input [disabled]="!ordiForm.valid" type="submit">
+    </form>
+  </div>
+</div>
+
+
+
+
+
+

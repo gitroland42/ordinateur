@@ -1,0 +1,33 @@
+
+<main role="main">
+
+  <div class="container p-5">
+    <div class="row">
+
+      <div class="col-md-12 ">
+
+        <div *ngIf="!isLoading" class="card" style="width: 25rem;">
+          <div class="card-header">
+            Detail model <span>{{ordinateur.modele}}</span>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Marque: {{ordinateur.marque}}</li>
+            <li class="list-group-item">Type: {{ordinateur.type}}</li>
+            <li class="list-group-item">Catégorie: {{ordinateur.category}}</li>
+            <li class="list-group-item">Prix achat: {{ordinateur.prixAchat| number : '1.2-2'}}</li>
+            <li class="list-group-item">Prix vente: {{ordinateur.prixVente| number : '1.2-2'}}</li>
+            <li class="list-group-item">Indice: {{ordinateur.prixVente-ordinateur.prixAchat| number : '1.2-2'}}</li>
+            <li class="list-group-item">{{ordinateur.dateEntreeStock|date:'dd/MM/yyyy'}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<ng-container *ngIf="isLoading">
+  <div class="spinner-border text-warning" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</ng-container>
+
